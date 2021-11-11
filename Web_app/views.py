@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from patient.models import Patient
 from .models import Hospital
+from django.db.models import Q
 
 # Create your views here.
 
@@ -14,7 +15,8 @@ def all_model_queries(request):
 	age35query=patients_agegreaterthan35.query
 
 	patient_fname_lname=Patient.objects.filter(
-		first_name__startswith='s') | Patient.objects.filter(last_name__startswith='h')
+		Q(first_name__startswith='s') & Q(last_name__startswith='h')
+		)
 	search_fname_lname_query=patient_fname_lname.query
 
 	context={
