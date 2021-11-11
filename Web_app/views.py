@@ -15,7 +15,7 @@ def all_model_queries(request):
 	age35query=patients_agegreaterthan35.query
 
 	patient_fname_lname=Patient.objects.filter(
-		Q(first_name__startswith='s') & Q(last_name__startswith='h')
+		Q(first_name__startswith='e') & Q(last_name__startswith='h')
 		)
 	search_fname_lname_query=patient_fname_lname.query
 
