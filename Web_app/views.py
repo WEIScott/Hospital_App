@@ -10,7 +10,8 @@ def index(request):
 
 
 def all_model_queries(request):
-	patients_agegreaterthan35=Patient.objects.filter(age__gt=35)
+	patients_agegreaterthan35=Patient.objects.filter(
+		age__gt=35).values('first_name', 'last_name')
 #! can write age__lt, age__eq, age__ne(not equal)
 	age35query=patients_agegreaterthan35.query
 
@@ -26,6 +27,8 @@ def all_model_queries(request):
 	name_exclude_e_query=patient_firstname_exclude_e.query
 
 
+	patient_nth_record = Patient.objects.order_by('-dateofbirth')[2]
+
 	context={
 		'patients_agegreaterthan35_key':patients_agegreaterthan35,
 		'age35query_key':age35query,
@@ -34,6 +37,7 @@ def all_model_queries(request):
 		'search_fname_lname_query_key':search_fname_lname_query,
 
 		'patient_firstname_exclude_e_key':patient_firstname_exclude_e,
-		'name_exclude_e_query_key':name_exclude_e_query
+		'name_exclude_e_query_key':name_exclude_e_query,
+		'patient_nth_record_key':patient_nth_record
 	}
 	return render(request, 'modelQueries.html', context)

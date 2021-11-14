@@ -49,6 +49,13 @@
               <td>{{ patient.first_name }} {{ patient.last_name }}</td>
             </tr>
             {% endfor %}
+
+             <tr>
+              <th scope="row">4</th>
+              <td>The 2nd oldest patient</td>
+              <td>It doesn`t have an queryset</td>
+              <td>{{ patient_nth_record_key.first_name }} {{ patient_nth_record_key.last_name }}</td>
+            </tr>
           </tbody>
         </table>
 
