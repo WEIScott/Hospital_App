@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from patient.models import Patient
 from .models import Hospital
-from django.db.models import Q
+from django.db.models import Q, Avg,Max,Min,Sum, Count
 
 # Create your views here.
 
@@ -29,6 +29,13 @@ def all_model_queries(request):
 
 	patient_nth_record = Patient.objects.order_by('-dateofbirth')[2]
 
+
+	patient_avg_age = Patient.objects.all().aggregate(
+		average_age=Avg('age'))
+
+
+	patient_counts = Patient.objects.all().count()
+
 	context={
 		'patients_agegreaterthan35_key':patients_agegreaterthan35,
 		'age35query_key':age35query,
@@ -38,6 +45,11 @@ def all_model_queries(request):
 
 		'patient_firstname_exclude_e_key':patient_firstname_exclude_e,
 		'name_exclude_e_query_key':name_exclude_e_query,
-		'patient_nth_record_key':patient_nth_record
+		'patient_nth_record_key':patient_nth_record,
+
+		'patient_avg_age_key':patient_avg_age,
+
+		'patient_counts_key':patient_counts
+
 	}
 	return render(request, 'modelQueries.html', context)

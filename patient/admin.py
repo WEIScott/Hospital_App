@@ -6,7 +6,7 @@ from .models import Patient
 
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
-	prepopulated_field = {'slug':('first_name', 'last_name'),}
+	prepopulated_fields = {'slug':('first_name', 'last_name'),}
 	list_display = ['patient_id', 'profileimage', 'first_name', 'last_name', 
 					'gender', 'age', 'mobile_number']
 	list_filter = ['gender', 'first_name']

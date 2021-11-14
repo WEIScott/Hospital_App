@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,8 +14,14 @@
   </head>
   <body>
   
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'index' %}">HIC</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h1 id="site-name">
+      <a href="{% url 'admin:index' %}">
+          <img src="{% static 'logo.png' %}" height="40px" />
+      </a>
+      <a class="navbar-brand" href="{% url 'index' %}">HIC</a>
+
+    </h1>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,19 +29,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto"
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'allhospitals' %}">Hospital</a>
+        <a class="nav-link text-dark" href="{% url 'allhospitals' %}">Hospital</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'patients' %}">Patient</a>
+        <a class="nav-link text-dark" href="{% url 'patients' %}">Patient</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Insurance Companies</a>
+        <a class="nav-link text-dark" href="#">Insurance Companies</a>
       </li>   
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'allqueries' %}">Model Queries</a>
+        <a class="nav-link text-dark" href="{% url 'allqueries' %}">Model Queries</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Staff</a>
+        <a class="nav-link text-dark" href="#">Staff</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

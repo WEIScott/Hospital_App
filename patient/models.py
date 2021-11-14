@@ -25,3 +25,5 @@ class Patient(models.Model):
 	def __dtr__(self):
 		return self.first_name + ' ' + last_name
 		
+	class Meta:
+		verbose_name_plural = "Patient Info"

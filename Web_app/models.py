@@ -12,6 +12,9 @@ class Hospital_Type(models.Model):
 		def __str__(self):
 			return self.type_name
 
+		class Meta:
+			verbose_name_plural = "Hospital type"
+
 
 
 
@@ -27,3 +30,7 @@ class Hospital(models.Model):
 
 		def __str__(self):
 			return self.name
+
+
+		class Meta:
+			verbose_name_plural = "Hospital"

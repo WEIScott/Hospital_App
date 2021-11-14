@@ -18,9 +18,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Web_app.urls')),
     path('hospitals/', include('hospital.urls')),
     path('patients/', include('patient.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+#customized the admin pages
+admin.site.site_header = "HIC Admin"
+admin.site.site_title = "HIC Admin Portal"
+admin.site.index_title = "Welcome to HIC Researcher Portal"
