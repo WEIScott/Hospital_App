@@ -14,16 +14,26 @@ def all_model_queries(request):
 #! can write age__lt, age__eq, age__ne(not equal)
 	age35query=patients_agegreaterthan35.query
 
+
 	patient_fname_lname=Patient.objects.filter(
 		Q(first_name__startswith='e') & Q(last_name__startswith='h')
 		)
 	search_fname_lname_query=patient_fname_lname.query
+
+
+	patient_firstname_exclude_e = Patient.objects.exclude(
+		first_name__startswith='e')
+	name_exclude_e_query=patient_firstname_exclude_e.query
+
 
 	context={
 		'patients_agegreaterthan35_key':patients_agegreaterthan35,
 		'age35query_key':age35query,
 
 		'patient_fname_lname_key':patient_fname_lname,
-		'search_fname_lname_query_key':search_fname_lname_query
+		'search_fname_lname_query_key':search_fname_lname_query,
+
+		'patient_firstname_exclude_e_key':patient_firstname_exclude_e,
+		'name_exclude_e_query_key':name_exclude_e_query
 	}
 	return render(request, 'modelQueries.html', context)

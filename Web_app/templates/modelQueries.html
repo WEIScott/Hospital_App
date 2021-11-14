@@ -40,6 +40,15 @@
               <td>{{ patient.first_name }} {{ patient.last_name }}</td>
             </tr>
             {% endfor %}
+
+            {% for patient in patient_firstname_exclude_e_key %}
+            <tr>
+              <th scope="row">3</th>
+              <td>Exclue the patient whose fist_name start with 'e'</td>
+              <td>{{ name_exclude_e_query_key }}</td>
+              <td>{{ patient.first_name }} {{ patient.last_name }}</td>
+            </tr>
+            {% endfor %}
           </tbody>
         </table>
 
