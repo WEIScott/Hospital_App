@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'Web_app',
     'hospital',
     'patient',
+    'insurancecompany',
+    'claim',
 ]
 
 MIDDLEWARE = [
