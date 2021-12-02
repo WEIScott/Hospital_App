@@ -2,7 +2,9 @@
 {% extends 'base.html' %}
 
 <head>
-	<title>Insurance Company Data</title>
+  {% block title %}
+	<title>Claim</title>
+  {% endblock %}
 </head>
 
 <body>
@@ -13,11 +15,11 @@
     {% for each_company in all_company_data_key %}
 
     <div class="card text-center">
-      <div class="card-header">
+      <div class="card-header bg-warning">
         {{ each_company.insurancecompany_id }}    
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ each_company.insurancecompany_name }}</h5>
+        <h3 class="card-title">{{ each_company.insurancecompany_name }}</h3>
         <p class="card-text">{{ each_company.company_detail }}</p>
         <a href="#" class="btn btn-primary">View more</a>
       </div>

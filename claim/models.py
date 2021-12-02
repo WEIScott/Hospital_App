@@ -11,6 +11,10 @@ class ClaimStatus(models.Model):
 	claim_status_code = models.CharField(max_length=8)
 	status_description = models.TextField()
 
+	def __str__(self):
+		return self.status_description
+
+
 class Claim(models.Model):
 	claim_number = models.IntegerField(primary_key=True)
 	claim_status = models.ForeignKey(ClaimStatus, on_delete=models.CASCADE)
