@@ -3,6 +3,9 @@ from patient.models import Patient
 from .models import Hospital
 from django.db.models import Q, Avg,Max,Min,Sum, Count
 
+from .forms import ContactForm, ContactModelForm
+from django.http import HttpResponse
+
 # Create your views here.
 
 def index(request):
@@ -53,3 +56,33 @@ def all_model_queries(request):
 
 	}
 	return render(request, 'modelQueries.html', context)
+
+
+
+def get_contact(request):
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			return HttpResponse('You data is submitted!')
+	else:
+		form = ContactForm()
+	context = {
+		'form_key': form
+	}
+	return render(request, 'get_contact.html', context) 
+
+
+def ContactModelFormView(request):
+	if request.method == 'POST':
+		form = ContactModelForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponse('You data is submitted!')
+	else:
+		form = ContactModelForm()
+	context = {
+		'form_key': form
+	}
+	return render(request, 'get_contact.html', context) 
+
+

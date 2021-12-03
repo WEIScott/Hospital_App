@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hospital_Type, Hospital
+from .models import Hospital_Type, Hospital, Contact
 
 # Register your models here.
 
@@ -16,3 +16,5 @@ class HospitalAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug':('name',)}
 	list_display = ['category', 'name', 'address', 'logo']
 	list_filter = ['category', 'address']
+
+admin.site.register(Contact)
