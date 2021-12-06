@@ -25,7 +25,8 @@ urlpatterns = [
     path('hospitals/', include('hospital.urls')),
     path('patients/', include('patient.urls')),
     path('insurancecompany/', include('insurancecompany.urls')),
-    path('claim/', include('claim.urls'))
+    path('claim/', include('claim.urls')),
+    path('user/', include('user.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

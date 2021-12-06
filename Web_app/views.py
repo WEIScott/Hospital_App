@@ -3,7 +3,7 @@ from patient.models import Patient
 from .models import Hospital
 from django.db.models import Q, Avg,Max,Min,Sum, Count
 
-from .forms import ContactForm, ContactModelForm
+from .forms import ContactModelForm
 from django.http import HttpResponse
 
 # Create your views here.

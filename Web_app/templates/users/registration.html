@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+  {% block title %}
+	<title>Sign up</title>
+  {% endblock %}
+</head>
+
+<body>
+
+{% block content %}
+
+  <div class="container">
+    <h2 class="mt-4">Sign up</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ signupform_key.as_p }}
+      <input type="submit" value="Enter" class="bg-dark text-white btn btn-group-vertical">
+      <input type="reset" value="Clear" class="bg-warning text-white btn btn-group-vertical">
+    </form>
+  </div>
+
+{% endblock %}
+
+</body>
+ 
+
