@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from patient.models import Patient
 from .models import Hospital
 from django.db.models import Q, Avg,Max,Min,Sum, Count
@@ -6,10 +6,30 @@ from django.db.models import Q, Avg,Max,Min,Sum, Count
 from .forms import ContactModelForm
 from django.http import HttpResponse
 
+from user.forms import LoginForm
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
+ 
 # Create your views here.
 
 def index(request):
-	return render(request, 'index.html')
+	if request.method == 'POST':
+		loginform = LoginForm(request.POST)
+		uname = request.POST.get("username")
+		password = request.POST.get("password")
+		user_data = authenticate(username=uname, password=password)
+		print('user data is: ', user_data)
+		if user_data is not None:
+			login(request, user_data)
+			return redirect('claimdata')
+		else:
+			messages.error(request, 'User or password is incorrect')
+	else:
+		loginform = LoginForm()
+	context = {
+		'loginform_key':loginform
+	}
+	return render(request, 'index.html', context )
 
 
 def all_model_queries(request):

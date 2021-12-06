@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from .models import UserProfile
 
 
@@ -42,3 +43,20 @@ class SignupForm(forms.ModelForm):
 		model = User
 		fields= ['username', 'first_name',
 				'last_name', 'email', 'password']
+
+
+class LoginForm(AuthenticationForm):
+	username = forms.CharField(label="Username",
+							widget=forms.TextInput(attrs={
+								'class':'form-control bg-light'
+								})
+		)
+	password = forms.CharField(label="Password",
+							widget=forms.PasswordInput(attrs={
+								'class':'form-control bg-light'
+								})
+		)
+
+	class Meta:
+		model = User
+		fields = ['username', 'password']

@@ -13,19 +13,32 @@
   <div class="container">
 
     {% block content %}
+
+    {% if request.user.is_authenticated %}
+    <div class="container mt-3">
+      <h1>Welcome To Health Inurance Claim project</h1>
+      <img src="{% static 'index.jfif' %}">
+    </div>
+
+    {% else %}
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-8">
       	<p class="mt-3 led text-muted">Welcome To Health Inurance Claim project! </p>
-        <img src="{% static 'index.jfif' %}" class="img-fluid">
+        <img src="{% static 'index.jfif' %}" class="img-fluid " alt="Responsive image">
       </div>
 
-      <div class="col-sm-2">
-        <h3 class="mt-3 led">Signup here!</h3>
-        <form class="bg-warning">
-          
-        </form>
+      <div class="col-sm-4">
+        <h3 class="mt-3 led">Login</h3>
+          <form method="post">
+            {% csrf_token %}
+            {{ loginform_key }}
+            <br>
+          <input type="submit" value="Login" class="bg-dark text-white btn btn-group-vertical">
+          <input type="reset" value="Clear" class="bg-warning text-white btn btn-group-vertical">
+          </form>
       </div>
     </div>
+    {% endif %}
     {% endblock %}
 
   </div>
