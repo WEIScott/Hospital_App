@@ -41,3 +41,9 @@ def login_view(request):
 	#url_path = ['user/login.html', 'index.html']
 	return render(request, 'users/login.html', context)
 
+
+
+def logout_view(request):
+	logout(request)
+	return redirect('index')
+
